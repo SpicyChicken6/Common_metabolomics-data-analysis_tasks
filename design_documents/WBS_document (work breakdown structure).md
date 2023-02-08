@@ -1,7 +1,7 @@
-TCGA matchmaker
+Metabolomics data preprocessing
 - Activity 1: Set up GitHub repository
 - [X] Task 1.1: Set up GitHub repository
-- [ ] Task 1.2: Create high-level description document
+- [X] Task 1.2: Create high-level description document
 - [ ] Task 1.3: Create code structure
 - Activity 2: Build prototype
   - Activity 2.1 : Refine design to describe tasks
