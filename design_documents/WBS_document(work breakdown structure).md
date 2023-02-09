@@ -19,5 +19,28 @@ Common_metabolomics-data-analysis_tools
       - [ ] The structure of the metabolomics concentration data should be a dataframe for the ease of manipulation
       - [ ] Define the log transformation function and use it on the data to perform the transformation
       - [ ] Generate a new dataframe with metabolites concentration values are log transformed
-  - Activity 2.5: Test prototype 
+  - Activity 2.5: Implement data scaling function
+    - [ ] Task 2.5.1: Implement data scaling function
+      - [ ] The structure of the metabolomics concentration data should be a dataframe for the ease of manipulation
+      - [ ] Define the range for data scaling
+      - [ ] Generate a new dataframe with metabolites concentration values on a scaled level
+  - Activity 2.6: Implement data normalization function
+    - [ ] Task 2.6.1: Implement mean centering normalization function
+      - [ ] The structure of the metabolomics concentration data should be a dataframe for the ease of manipulation
+      - [ ] Define the mean centering transformation function and use it on the data to perform the normalization
+      - [ ] Generate a new dataframe with metabolites concentration values are normalized by mean
+    - [ ] Task 2.6.2: Implement LOESS normalization function
+      - [ ] The structure of the metabolomics concentration data should be a dataframe for the ease of manipulation
+      - [ ] Define the local weighted regression normalization function and use it on the data to perform the normalization
+      - [ ] Generate a new dataframe with metabolites concentration values are transformed based on LOESS
+    - [ ] Task 2.6.3: Implement quartile normalization function
+      - [ ] The structure of the metabolomics concentration data should be a dataframe for the ease of manipulation
+      - [ ] Define the quartile normalization function and use it on the data to perform the normalization
+      - [ ] Generate a new dataframe with metabolites concentration values are normalized by quartile
+  - Activity 2.7: Perform data quality check on the data
+    - [ ] Task 2.7.1: Check data quality
+      - [ ] The structure of the metabolomics concentration data should be a dataframe for the ease of manipulation
+      - [ ] Box plot the average metabolites concentration data
+      - [ ] Check the visualization to make sure the quality of the data is fine
+  - Activity 2.8: Test prototype 
 - Activity 3: Build prototype II
