@@ -1,4 +1,4 @@
-# project576
+# Common_metabolomics-data-analysis_tasks
 
 **Tool development for bioinf576 class**
 
