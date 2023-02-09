@@ -1,7 +1,8 @@
 Software requirement specification
 
 V.0.1\
-For: Project_name\
+For: Common_metabolomics-data-analysis_tools
+\
 By: Zhijian Yu
 
 
