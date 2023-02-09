@@ -8,5 +8,4 @@ https://www.ebi.ac.uk/metabolights/search? (Metabolights)
 
 
 2. A data file with metabolites concentration profile
-It will contain a matrix with metabolites names and metabolites concentrations on each row for each sample
-This file will be provided by the user, I will have data for testing
+It will contain a matrix with metabolites names and metabolites concentrations on each row for each sample. This file will be provided by the user, I will have data for testing
