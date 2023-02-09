@@ -1,14 +1,23 @@
-Metabolomics data preprocessing
+Common_metabolomics-data-analysis_tools
 - Activity 1: Set up GitHub repository
-- [X] Task 1.1: Set up GitHub repository
-- [X] Task 1.2: Create high-level description document
-- [ ] Task 1.3: Create code structure
+  - [X] Task 1.1: Set up GitHub repository
+  - [X] Task 1.2: Create high-level description document
+  - [X] Task 1.3: Create code structure
 - Activity 2: Build prototype
   - Activity 2.1 : Refine design to describe tasks
-  - [ ] Task 2.1.1: Break project into activities
-  - [ ] Task 2.1.2: Break project into tasks
-  -  Activity 2.2: Define high-level functions
-  - [ ] Task 2.2.1: Define read/create data function
-  - [ ] Task 2.2.2: Define analysis function
-  - [ ] Task 2.2.3: Define save output function
-  - Activity 2.3: Finishing the interior
+    - [ ] Task 2.1.1: Break project into activities
+    - [ ] Task 2.1.2: Break project into tasks
+  - Activity 2.2: Define high-level functions
+    - [ ] Task 2.2.1: Define read/create data function
+    - [ ] Task 2.2.2: Define analysis function
+    - [ ] Task 2.2.3: Define save output function
+  - Activity 2.3: Implement read data and save output
+    - [ ] Task 2.3.1: Implement read/create data function
+ instance and for that I compute a simple match score again: the sum of the differences between my sample and my reference profile    
+  - Activity 2.4: Implement transformation on the input data 
+    - [ ] Task 2.4.1: Implement log transformation function
+      - [ ] The structure of the metabolomics concentration data should be a dataframe for the ease of manipulation
+      - [ ] Define the log transformation function and use it on the data to perform the transformation
+      - [ ] Generate a new dataframe with metabolites concentration values are log transformed
+  - Activity 2.5: Test prototype 
+- Activity 3: Build prototype II
