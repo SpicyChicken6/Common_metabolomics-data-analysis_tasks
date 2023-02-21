@@ -1,14 +1,14 @@
 Software requirement specification
 
 V.0.1\
-For: Common_metabolomics-data-analysis_tools
+For: metabolomics_analysis_tools
 \
 By: Zhijian Yu
 
 
 1.	Introduction
 
-	A set of tools to perform common targeted metabolomics data analysis tasks including data quality check, data transformation, scaling and normalization, common statistical analyses -- PCA analysis and MA plot, and visualization.
+	A set of tools to perform common targeted metabolomics data analysis tasks including data transformation, scaling and normalization, and common statistical analyses -- PCA analysis and MA plot, and visualization.
 
 2.	Overall description 
 	
