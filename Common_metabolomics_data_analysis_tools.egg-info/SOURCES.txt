@@ -1,9 +1,0 @@
-LICENSE
-README.md
-setup.py
-Common_metabolomics_data_analysis_tools.egg-info/PKG-INFO
-Common_metabolomics_data_analysis_tools.egg-info/SOURCES.txt
-Common_metabolomics_data_analysis_tools.egg-info/dependency_links.txt
-Common_metabolomics_data_analysis_tools.egg-info/top_level.txt
-tool/__init__.py
-tool/test_module.py
