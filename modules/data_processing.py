@@ -2,8 +2,13 @@ import pandas as pd
 import os
 from pathlib import Path
 
-#data reading
-def read_data(filename="human_cachexia.csv"):
+def get_file_path(sub_dir1,sub_dir2,filename):
+    tool_directory=Path.cwd()
+    #project_directory=os.path.dirname(tool_directory)
+    data_directory=os.path.join(tool_directory,sub_dir1,sub_dir2,filename)
+    return data_directory
+
+def read_data(filename):
     """
     Read the data from the data folder and return a pandas dataframe
 
@@ -13,11 +18,7 @@ def read_data(filename="human_cachexia.csv"):
     Returns:
         pandas.DataFrame: Dataframe containing the data
     """
-
-    tool_directory=Path.cwd()
-    project_directory=os.path.dirname(tool_directory)
-    data_directory=os.path.join(project_directory,'resources','test_dataset',filename)
-    input_data=pd.read_csv(data_directory)
+    input_data=pd.read_csv(filename)
     print("data read successfully, the shape of the dataframe is: ", input_data.shape)
 
     return input_data
