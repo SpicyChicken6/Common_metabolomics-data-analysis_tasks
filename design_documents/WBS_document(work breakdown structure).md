@@ -44,3 +44,7 @@ Common_metabolomics-data-analysis_tools
       - [ ] Check the visualization to make sure the quality of the data is fine
   - Activity 2.8: Test prototype 
 - Activity 3: Build prototype II
+- Activity 4: Improve based on feedback
+  - [X] Task 4.1: Add more edge cases for testing
+  - [] Task 4.2: Create a flowchart that shows how each module works
+  - [] Task 4.3: Write guide on how to run the package
