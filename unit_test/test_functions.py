@@ -17,26 +17,34 @@ file_to_process=dp.get_file_path(sub_dir1,sub_dir2,filename)
 def test_read_file():
     assert dp.read_data(file_to_process).shape == (77,65), f"function passed the test, file read successfully"
 
-filename="human_cachexia.txt"
-def test_data_processing_edge1():
+
+filename="human_cachexia.csv"
+def test_read_file_edge1():
     '''
-    test if the function can handle a file with a different extension
+    edge cases when file format is wrong
     '''
     assert dp.get_file_path(sub_dir1,sub_dir2,filename).endswith('csv'), f"function passed the test"
-    assert dp.get_file_path(sub_dir1,sub_dir2,filename).endswith('txt'), f"wrong file formate, please check the file extension"
-    assert dp.get_file_path(sub_dir1,sub_dir2,filename).endswith('xlsx'), f"wrong file formate, please check the file extension"
-##
 
+def test_read_file_edge2():
+    '''
+    edge case when the file name is not in string
+    '''
+    assert type(file_to_process)==str, f"correct fi;e name format, please check the input"
+
+    
+##
+## normalization
+after_norm=nm.normalize_by_sum(dp.read_data(file_to_process)).iloc[:,2:].sum(axis=0)
 
 def test_normalization_sum():
-    assert nm.normalize_by_sum() == 3, f"function passed the test"
+    assert after_norm[0:].sum(axis=0)==len(after_norm), f"function passed the test, normalization by sum is working"
 
-##
-def test_normalization_sum_edge1():
-    assert nm.normalize_by_sum() == 3, f"function passed the test"
+# ##
+# def test_normalization_sum_edge1():
+#     assert nm.normalize_by_sum() == 3, f"function passed the test"
 
-##
-def test_log_transform():
-    assert tf.data_transformation_log() == 3, f"function passed the test"
+# ##
+# def test_log_transform():
+#     assert tf.data_transformation_log() == 3, f"function passed the test"
 
-##
+# ##

@@ -19,7 +19,7 @@ def normalize_by_sum(input_data):
     '''
     data_to_process=input_data.iloc[:,2:]
     normalized_data=data_to_process.div(data_to_process.sum(axis=0), axis=1)
-    normed_data=input_data.copy
+    normed_data=input_data.copy()
     normed_data.iloc[:,2:]=normalized_data
     
     return normed_data
@@ -39,7 +39,7 @@ def normalize_by_median(input_data):
 
     data_to_process=input_data.iloc[:,2:]
     normalized_data=data_to_process.div(data_to_process.median(axis=0), axis=1)
-    normed_data=input_data.copy
+    normed_data=input_data.copy()
     normed_data.iloc[:,2:]=normalized_data
 
     return normed_data
@@ -69,7 +69,7 @@ def normalize_by_reference_sample_PQN(input_data):
     data_norm = data_norm.div(metabolite_means, axis=0)
     col_medians = data_norm.median(axis=0)
     data_norm = data_norm.div(col_medians, axis=1)
-    normed_data=input_data.copy
+    normed_data=input_data.copy()
     normed_data.iloc[:,2:]=data_norm
 
     return normed_data
