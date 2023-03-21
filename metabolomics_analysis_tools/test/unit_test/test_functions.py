@@ -1,7 +1,7 @@
-import bin.test_module as tm
-import bin.data_preprocessing.normalization as nm
-import bin.data_preprocessing.transformation as tf
-import bin.data_preprocessing.data_reading as dp
+import metabolomics_analysis_tools.test_module as tm
+import metabolomics_analysis_tools.data_preprocessing.normalization as nm
+import metabolomics_analysis_tools.data_preprocessing.transformation as tf
+import metabolomics_analysis_tools.data_preprocessing.data_reading as dp
 
 ## a simple test function to see if unit testing is working
 def test_xy_sum():
