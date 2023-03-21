@@ -1,0 +1,2 @@
+#ignore all pycache files in the project
+__pycache__
