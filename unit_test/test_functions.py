@@ -1,7 +1,7 @@
 import modules.test_module as tm
-import modules.normalization as nm
-import modules.transformation as tf
-import modules.data_processing as dp
+import modules.data_preprocessing.normalization as nm
+import modules.data_preprocessing.transformation as tf
+import modules.data_preprocessing.data_reading as dp
 
 ## a simple test function to see if unit testing is working
 def test_xy_sum():
