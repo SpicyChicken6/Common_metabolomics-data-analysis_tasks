@@ -1,2 +1,5 @@
 #ignore all pycache files in the project
 __pycache__
+
+#ignore vscode setting files
+.vscode
