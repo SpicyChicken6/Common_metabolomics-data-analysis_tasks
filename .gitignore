@@ -6,3 +6,9 @@ __pycache__
 
 #ignore ipython notebook checkpoints
 .ipynb_checkpoints
+
+#ignore dist folder
+dist
+
+#ignore egg info
+.egg-info
