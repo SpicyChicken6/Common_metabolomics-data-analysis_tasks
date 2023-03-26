@@ -12,7 +12,7 @@ Even though there are lots of packages available for the functions mentioned abo
 
 ![metabolomics analysis workflow](metabolomics_analysis_tools/resources/images/mwf.gif)
 
-**Package user guide** (A sample implementation can be found here: [Sample implementation](metabolomics_analysis_tools/notebook/tutorial.pdf)
+**Package user guide** (A sample implementation can be found here: [Sample implementation](metabolomics_analysis_tools/notebook/tutorial.pdf))
 
 *---Package install---*
 
