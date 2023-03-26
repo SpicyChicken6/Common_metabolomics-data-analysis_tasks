@@ -45,8 +45,8 @@ There are two groups of functions in this package, and there are multiple module
 
 To use a certain function, for example, to use read_data_file function to read file, you can do: \
 `import metabolomics_analysis_tools.data_preprocessing as dp` \
-`df=dp.data_reading.read_data_file()`
-
+`df=dp.data_reading.read_data_file()`\
+Then you can use other functions on the data you just loaded.
 
 
 
