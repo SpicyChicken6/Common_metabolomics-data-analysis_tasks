@@ -1,0 +1,67 @@
+---
+title: "Metabolomics_analysis_tools Basics"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+Let's get started! First, import functions we will use for this demo from the package metabolomics_analysis_tools@import_functions.
+
+```{python}
+#| label: import_functions
+
+import metabolomics_analysis_tools.data_preprocessing.data_reading as dr
+import metabolomics_analysis_tools.data_preprocessing.normalization as dn
+import metabolomics_analysis_tools.stats_analyses.analyses as sa
+import warnings
+warnings.filterwarnings('ignore')
+```
+
+1. Then we can use the data_reading module to read in the data, by default it will read in the data from the resources/test_dataset folder in the package. \
+We can also use the data_reading module to read in the data from a custom path, by passing the path as an argument to the read_data_file function (file_path='path/to/file.csv').\
+The read_data_file function will return a pandas dataframe.
+
+```{python}
+#| label: read_data
+df=dr.read_data_file()
+```
+
+2. Next we can use the normalization module to normalize the data, here we will use the median normalization method
+normalized_data=dn.normalize_by_median(df).\
+We can have a look at the first 5 rows of the normalized data
+normalized_data.head().\
+
+
+```{python}
+#| label: normalize_data
+normalized_data=dn.normalize_by_median(df)
+normalized_data.head()
+```
+
+3. (a)We can use the analyses module to perform statistical analyses on the data.\
+Here we will first perform a PCA analysis on the data to see if there are any patterns in the data.\
+The PCA_analysis function will return a pandas dataframe containing the principal components
+principal_components=sa.PCA_analysis(normalized_data).
+
+```{python}
+#| label: perform_pca
+principal_components=sa.PCA_analysis(normalized_data)
+```
+
+3. (b)Next, we can do the same for the MA plot.\
+The MA_plot function will return a pandas dataframe containing the log2 fold change and the -log10 p-value\
+
+```{python}
+#| label: perform_ma_plot
+MA_plot=sa.ma_plot(normalized_data)
+```
+
+3. (c)We can also do a volcano plot, which can show us the significantly differentially expressed metabolites in the data.\
+The volcano_plot function will return a pandas dataframe containing the log2 fold change and the -log10 p-value
+volcano_plot=sa.volcano_plot(normalized_data)
+
+```{python}
+#| label: perform_volcano_plot
+volcano_plot=sa.volcano_plot(normalized_data)
+```
