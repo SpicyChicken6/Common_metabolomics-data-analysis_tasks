@@ -17,4 +17,4 @@ By: Zhijian Yu
 	
 3.	Requirements
 
-	Input data format for targeted metabolites concentrations: csv file with columns that contain metabolites concentration values for targeted metabolites; each row represents each sample
+	Input data format for targeted metabolites concentrations: csv file with columns that contain metabolites concentration values for targeted metabolites; each row represents each sample; only contains one factor--there are only two groups in the data
