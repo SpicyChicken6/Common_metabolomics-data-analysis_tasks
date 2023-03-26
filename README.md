@@ -35,8 +35,8 @@ Column 3 to the end will be the metabolite levels for different metabolites) </s
 
 There are two groups of functions in this package, and there are multiple modules under each of these group:
 * "data_preprocessing": \
-  data_reading <sub>(functions include: read_data_file)</sub>\
-  normalization <sub>(functions include: normalize_by_sum, normalize_by_median, normalize_by_reference_sample_PQN, )</sub>\
+  data_reading <sub>(functions include: read_data_file.)</sub>\
+  normalization <sub>(functions include: normalize_by_sum, normalize_by_median, normalize_by_reference_sample_PQN.)</sub>\
   scaling <sub>(functions include: data_scaling_mean_centered)</sub>\
   transformation <sub>(functions include: data_transformation_log)</sub>
   
@@ -49,5 +49,9 @@ To use a certain function, for example, to use read_data_file function to read f
 Then you can use other functions on the data you just loaded.
 
 
+*---Expected results---*
 
+The file reading step should return us a panda dataframe; \
+After data transformation, the data should be more normally distributed; \
+The stats analyses step will generate plots for each analysis for us to look at.
 
