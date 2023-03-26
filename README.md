@@ -10,7 +10,7 @@ The goal of this project is to implement a Python based pipeline or package rela
 
 Even though there are lots of packages available for the functions mentioned above, implementing them myself will help me understand those functions better and help me do a better analysis job hopefully.  
 
-![metabolomics analysis workflow](resources/images/mwf.gif)
+![metabolomics analysis workflow](metabolomics_analysis_tools/resources/images/mwf.gif)
 
 **Package user guide**
 
