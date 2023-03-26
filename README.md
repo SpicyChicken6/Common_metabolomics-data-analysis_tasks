@@ -19,7 +19,7 @@ Even though there are lots of packages available for the functions mentioned abo
 Steps:
 1. Git clone or download the github folder;
 2. Open the terminal, and go to this folder;
-3. Enter 'pip install dist/metabolomics_analysis_tools-0.1.0.tar.gz' to install the package locally;
+3. Enter `pip install dist/metabolomics_analysis_tools-0.1.0.tar.gz` to install the package locally;
 
 
 *---Sample data file---*
@@ -44,8 +44,8 @@ There are two groups of functions in this package, and there are multiple module
   analyses <sub>(functions include: PCA_analysis, ma_plot, volcano_plot)</sub>
 
 To use a certain function, for example, to use read_data_file function to read file, you can do: \
-'import metabolomics_analysis_tools.data_preprocessing as dp \
-df=dp.data_reading.read_data_file()'
+`import metabolomics_analysis_tools.data_preprocessing as dp` \
+`df=dp.data_reading.read_data_file()`
 
 
 
