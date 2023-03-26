@@ -25,6 +25,7 @@ The read_data_file function will return a pandas dataframe.
 ```{python}
 #| label: read_data
 df=dr.read_data_file()
+df.head()
 ```
 
 2. Next we can use the normalization module to normalize the data, here we will use the median normalization method
