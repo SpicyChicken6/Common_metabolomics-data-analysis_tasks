@@ -16,6 +16,7 @@ def read_data_file(package_name='metabolomics_analysis_tools', file_path='resour
         csv_reader = csv.reader(data_file)
         rows = [row for row in csv_reader]
         df = pd.DataFrame(rows[1:], columns=rows[0])
+        df.iloc[:,2:] = df.iloc[:,2:].astype({col: float for col in df.iloc[:,2:].columns})
         print("the shape of the dataframe is: ", df.shape)
         return df
     
