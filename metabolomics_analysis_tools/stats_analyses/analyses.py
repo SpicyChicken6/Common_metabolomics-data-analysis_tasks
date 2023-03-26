@@ -45,7 +45,7 @@ def PCA_analysis(normalized_data, number_of_components=2):
     return principal_df
 
 
-def volcano_plot(grouped_data, sig_threshold=0.05, fold_change_threshold=1.5):
+def volcano_plot(grouped_data, sig_threshold=0.05, fold_change_threshold=1.5, group_name='Muscle loss', group_A_name='control', group_B_name='cachexic'):
     '''
     Perform a two-sample t-test on each feature and plot the results as a volcano plot
     '''
@@ -62,8 +62,8 @@ def volcano_plot(grouped_data, sig_threshold=0.05, fold_change_threshold=1.5):
 
     # iterate over each feature
     for col in grouped_data.iloc[:, 1:]:
-        group_A = grouped_data[grouped_data['Muscle loss'] == 'control'][col]
-        group_B = grouped_data[grouped_data['Muscle loss'] == 'cachexic'][col]
+        group_A = grouped_data[grouped_data[group_name] == group_A_name][col]
+        group_B = grouped_data[grouped_data[group_name] == group_B_name][col]
         
         # perform a two-sample t-test for each feature
         t_stat, p_val = stats.ttest_ind(group_A, group_B)
@@ -102,13 +102,13 @@ def volcano_plot(grouped_data, sig_threshold=0.05, fold_change_threshold=1.5):
 
     return result_grouped_data
 
-def ma_plot (grouped_data):
+def ma_plot (grouped_data, group_name='Muscle loss', group_A_name='control', group_B_name='cachexic'):
     '''
     Create an MA plot
     '''
     # Calculate the log-fold change and mean expression
-    cachexic_mean = grouped_data[grouped_data['Muscle loss'] == 'cachexic'].iloc[:, 1:].mean()
-    control_mean = grouped_data[grouped_data['Muscle loss'] == 'control'].iloc[:, 1:].mean()
+    cachexic_mean = grouped_data[grouped_data[group_name] == group_B_name].iloc[:, 1:].mean()
+    control_mean = grouped_data[grouped_data[group_name] == group_A_name].iloc[:, 1:].mean()
     logFC = np.log2(cachexic_mean / control_mean)
     data_mean = np.log2(grouped_data.iloc[:, 1:].mean(axis=0))
     # Create the MA plot
