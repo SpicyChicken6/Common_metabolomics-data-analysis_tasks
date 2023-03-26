@@ -5,46 +5,25 @@ Common_metabolomics-data-analysis_tools
   - [X] Task 1.3: Create code structure
 - Activity 2: Build prototype
   - Activity 2.1 : Refine design to describe tasks
-    - [ ] Task 2.1.1: Break project into activities
-    - [ ] Task 2.1.2: Break project into tasks
+    - [X] Task 2.1.1: Break project into tasks
   - Activity 2.2: Define high-level functions
-    - [ ] Task 2.2.1: Define read/create data function
-    - [ ] Task 2.2.2: Define analysis function
-    - [ ] Task 2.2.3: Define save output function
-  - Activity 2.3: Implement read data and save output
-    - [ ] Task 2.3.1: Implement read/create data function
- instance and for that I compute a simple match score again: the sum of the differences between my sample and my reference profile    
-  - Activity 2.4: Implement transformation on the input data 
-    - [ ] Task 2.4.1: Implement log transformation function
-      - [ ] The structure of the metabolomics concentration data should be a dataframe for the ease of manipulation
-      - [ ] Define the log transformation function and use it on the data to perform the transformation
-      - [ ] Generate a new dataframe with metabolites concentration values are log transformed
-  - Activity 2.5: Implement data scaling function
-    - [ ] Task 2.5.1: Implement data scaling function
-      - [ ] The structure of the metabolomics concentration data should be a dataframe for the ease of manipulation
-      - [ ] Define the range for data scaling
-      - [ ] Generate a new dataframe with metabolites concentration values on a scaled level
-  - Activity 2.6: Implement data normalization function
-    - [ ] Task 2.6.1: Implement mean centering normalization function
-      - [ ] The structure of the metabolomics concentration data should be a dataframe for the ease of manipulation
-      - [ ] Define the mean centering transformation function and use it on the data to perform the normalization
-      - [ ] Generate a new dataframe with metabolites concentration values are normalized by mean
-    - [ ] Task 2.6.2: Implement LOESS normalization function
-      - [ ] The structure of the metabolomics concentration data should be a dataframe for the ease of manipulation
-      - [ ] Define the local weighted regression normalization function and use it on the data to perform the normalization
-      - [ ] Generate a new dataframe with metabolites concentration values are transformed based on LOESS
-    - [ ] Task 2.6.3: Implement quartile normalization function
-      - [ ] The structure of the metabolomics concentration data should be a dataframe for the ease of manipulation
-      - [ ] Define the quartile normalization function and use it on the data to perform the normalization
-      - [ ] Generate a new dataframe with metabolites concentration values are normalized by quartile
-  - Activity 2.7: Perform data quality check on the data
-    - [ ] Task 2.7.1: Check data quality
-      - [ ] The structure of the metabolomics concentration data should be a dataframe for the ease of manipulation
-      - [ ] Box plot the average metabolites concentration data
-      - [ ] Check the visualization to make sure the quality of the data is fine
-  - Activity 2.8: Test prototype 
-- Activity 3: Build prototype II
+  - Activity 2.3: Implement read data function
+    - [X] Task 2.3.1: file reading function
+  - Activity 2.4: Implement data processing functions
+    - [X] Task 2.4.1: Implement log transformation function
+    - [X] Task 2.4.2: Implement data scaling function
+    - [X] Task 2.4.3: Implement normalization function
+  - Activity 2.5: Perform data preassumptions check on the data
+    - [ ] Task 2.5.1: Check data normality
+    - [ ] Task 2.5.2: Check data homoscedasticity
+  - Activity 2.6: Implement stats analyses functions
+    - [X] Task 2.6.1: PCA analysis
+    - [X] Task 2.6.2: MA plot
+    - [X] Task 2.6.3: Volcano plot
+- Activity 3: Work based on happy path
+    - [X] Task 3.1: Create a demo
+    - [X] Task 3.2: Create a tutorial 
 - Activity 4: Improve based on feedback
   - [X] Task 4.1: Add more edge cases for testing
-  - [ ] Task 4.2: Create a flowchart that shows how each module works
-  - [ ] Task 4.3: Write guide on how to run the package
+  - [X] Task 4.2: Create a flowchart that shows how each module works
+  - [X] Task 4.3: Write guide on how to run the package
