@@ -14,8 +14,8 @@ Common_metabolomics-data-analysis_tools
     - [X] Task 2.4.2: Implement data scaling function
     - [X] Task 2.4.3: Implement normalization function
   - Activity 2.5: Perform data preassumptions check on the data
-    - [ ] Task 2.5.1: Check data normality
-    - [ ] Task 2.5.2: Check data homoscedasticity
+    - [X] Task 2.5.1: Check data normality
+    - [X] Task 2.5.2: Check data homoscedasticity
   - Activity 2.6: Implement stats analyses functions
     - [X] Task 2.6.1: PCA analysis
     - [X] Task 2.6.2: MA plot
