@@ -7,7 +7,7 @@ import pytest
 
 
 # test functions for each module
-## file processsing
+# file processsing
 input_data = dp.read_data_file()
 
 
@@ -27,32 +27,25 @@ def test_empty_input():
     ), f"function passed the test, empty input"
 
 
-##
-## normalization
+# normalization
 after_norm = nm.normalize_by_sum(input_data).iloc[:, 2:].sum(axis=0)
-
-
 def test_normalization_sum():
     assert after_norm[0:].sum(axis=0) == len(
         after_norm
     ), f"function passed the test, normalization by sum is working"
 
 
-##
-## transformation
+# transformation
 def test_data_transformation_log():
     # Create a sample input DataFrame
     input_data = pd.DataFrame(
         {"A": [1, 2, 3], "B": [4, 5, 6], "C": [10, 100, 1000], "D": [20, 200, 2000]}
     )
-
     # Call the data_transformation_log function with the input_data
     transformed_data = tf.data_transformation_log(input_data)
-
     # Manually calculate the expected transformed data
     expected_data = input_data.copy()
     expected_data.iloc[:, 2:] = np.log10(input_data.iloc[:, 2:])
-
     # Check if the transformed_data is equal to the expected_data
     pd.testing.assert_frame_equal(
         transformed_data, expected_data

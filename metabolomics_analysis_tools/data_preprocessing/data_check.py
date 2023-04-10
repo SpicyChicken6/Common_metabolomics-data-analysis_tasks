@@ -1,11 +1,5 @@
-import numpy as np
 import scipy.stats as stats
-from numpy.random import randn
-
-"""
-these functions should be used to determine if log transformations are needed for the data
-"""
-
+#these functions should be used to determine if log transformations are needed for the data
 
 def normal_dist_check(input_data):
     """

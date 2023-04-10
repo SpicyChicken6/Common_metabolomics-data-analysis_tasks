@@ -1,7 +1,4 @@
 import numpy as np
-import pandas as pd
-
-
 def data_transformation_log(input_data):
     """
     Transform the data by taking the log10 of each value

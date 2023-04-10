@@ -1,5 +1,3 @@
-import pandas as pd
-
 
 def data_scaling_mean_centered(normalized_data):
     """
