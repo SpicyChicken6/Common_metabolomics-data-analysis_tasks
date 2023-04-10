@@ -13,8 +13,11 @@ def data_transformation_log(input_data):
     '''
 
     data_to_process=input_data.iloc[:,2:]
+
+    if (data_to_process <= 0).any().any():
+        raise ValueError("Error: Non-positive values found in input data")
     data_log10 = data_to_process.apply(np.log10)
-    transformed_data=input_data.copy
+    transformed_data=input_data.copy()
     transformed_data.iloc[:,2:]=data_log10
     
     return transformed_data

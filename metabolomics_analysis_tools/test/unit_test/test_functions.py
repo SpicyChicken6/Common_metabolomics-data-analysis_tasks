@@ -1,50 +1,62 @@
-import metabolomics_analysis_tools.test_module as tm
 import metabolomics_analysis_tools.data_preprocessing.normalization as nm
 import metabolomics_analysis_tools.data_preprocessing.transformation as tf
 import metabolomics_analysis_tools.data_preprocessing.data_reading as dp
+import pandas as pd
+import numpy as np
+import pytest
 
-## a simple test function to see if unit testing is working
-def test_xy_sum():
-    assert tm.x_y_sum(1, 2) == 3, f"test function passed the test, unit testing is working"
 
 # test functions for each module
 ## file processsing
-sub_dir1="resources"
-sub_dir2="test_dataset"
-filename="human_cachexia.csv"
-file_to_process=dp.get_file_path(sub_dir1,sub_dir2,filename)
-
+input_data=dp.read_data_file()
 def test_read_file():
-    assert dp.read_data(file_to_process).shape == (77,65), f"function passed the test, file read successfully"
+    assert input_data.shape == (77,65), f"function passed the test, file read successfully"
 
-
-filename="human_cachexia.csv"
-def test_read_file_edge1():
-    '''
-    edge cases when file format is wrong
-    '''
-    assert dp.get_file_path(sub_dir1,sub_dir2,filename).endswith('csv'), f"function passed the test"
-
-def test_read_file_edge2():
-    '''
-    edge case when the file name is not in string
-    '''
-    assert type(file_to_process)==str, f"correct fi;e name format, please check the input"
-
-    
+def test_empty_input():
+    # Test with empty input
+    input_data = ""
+    expected_output = "Error: empty input"
+    assert dp.read_data_file(file_path=input_data)==expected_output, f"function passed the test, empty input"
 ##
 ## normalization
-after_norm=nm.normalize_by_sum(dp.read_data(file_to_process)).iloc[:,2:].sum(axis=0)
+after_norm=nm.normalize_by_sum(input_data).iloc[:,2:].sum(axis=0)
 
 def test_normalization_sum():
     assert after_norm[0:].sum(axis=0)==len(after_norm), f"function passed the test, normalization by sum is working"
 
-# ##
-# def test_normalization_sum_edge1():
-#     assert nm.normalize_by_sum() == 3, f"function passed the test"
+##
+## transformation
+def test_data_transformation_log():
+    # Create a sample input DataFrame
+    input_data = pd.DataFrame({
+        'A': [1, 2, 3],
+        'B': [4, 5, 6],
+        'C': [10, 100, 1000],
+        'D': [20, 200, 2000]
+    })
 
-# ##
-# def test_log_transform():
-#     assert tf.data_transformation_log() == 3, f"function passed the test"
+    # Call the data_transformation_log function with the input_data
+    transformed_data = tf.data_transformation_log(input_data)
 
-# ##
+    # Manually calculate the expected transformed data
+    expected_data = input_data.copy()
+    expected_data.iloc[:, 2:] = np.log10(input_data.iloc[:, 2:])
+
+    # Check if the transformed_data is equal to the expected_data
+    pd.testing.assert_frame_equal(transformed_data, expected_data), f"function passed the test"
+
+
+def test_data_transformation_log_non_positive_values():
+    # Create a sample input DataFrame with a non-positive value
+    input_data = pd.DataFrame({
+        'A': [1, 2, 3],
+        'B': [4, 5, 6],
+        'C': [10, 0, 1000],  # Zero value in column C
+        'D': [20, 200, 2000]
+    })
+
+    # Test if the function raises a ValueError for non-positive values
+    with pytest.raises(ValueError) as excinfo:
+        tf.data_transformation_log(input_data)
+
+    assert str(excinfo.value) == "Error: Non-positive values found in input data"
