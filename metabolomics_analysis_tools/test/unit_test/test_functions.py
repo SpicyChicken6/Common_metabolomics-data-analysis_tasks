@@ -29,6 +29,8 @@ def test_empty_input():
 
 # normalization
 after_norm = nm.normalize_by_sum(input_data).iloc[:, 2:].sum(axis=0)
+
+
 def test_normalization_sum():
     assert after_norm[0:].sum(axis=0) == len(
         after_norm
