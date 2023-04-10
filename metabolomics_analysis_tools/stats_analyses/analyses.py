@@ -6,6 +6,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+from sklearn.preprocessing import LabelEncoder
+import matplotlib.pyplot as plt
+import numpy as np
+
 def PCA_analysis(normalized_data, number_of_components=2):
     """
     Perform PCA analysis on the data
@@ -34,7 +38,15 @@ def PCA_analysis(normalized_data, number_of_components=2):
     # create a new DataFrame with the principal components
     principal_df = pd.DataFrame(data=principal_components, columns=["PC1", "PC2"])
 
-    # create a scatter plot of the principal components with annotations
+    # create a LabelEncoder to encode the groups as integers
+    le = LabelEncoder()
+    groups = normalized_data.iloc[:, 1]
+    groups_encoded = le.fit_transform(groups)
+
+    # create a colormap based on the number of unique groups
+    cmap = plt.cm.get_cmap('viridis', len(np.unique(groups_encoded)))
+
+    # create a scatter plot of the principal components with annotations and colors based on groups
     fig = plt.figure(figsize=(8, 8))
     ax = fig.add_subplot(1, 1, 1)
     ax.set_xlabel(
@@ -51,9 +63,10 @@ def PCA_analysis(normalized_data, number_of_components=2):
     )
     ax.set_title("2 Component PCA", fontsize=20)
 
-    ax.scatter(principal_df["PC1"], principal_df["PC2"], s=50)
+    ax.scatter(principal_df["PC1"], principal_df["PC2"], s=50, c=cmap(groups_encoded))
 
     return principal_df
+
 
 
 def volcano_plot(
