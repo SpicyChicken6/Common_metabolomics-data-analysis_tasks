@@ -1,7 +1,7 @@
 import numpy as np
 
 
-#normalization methods
+# normalization methods
 def normalize_by_sum(input_data):
     """
     Normalize the data by dividing each column by the sum of the row
