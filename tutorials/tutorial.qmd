@@ -1,5 +1,5 @@
 ---
-title: "Metabolomics_analysis_tools Tutorial"
+title: "Metabolomics_analysis_tools Tutorials"
 format:
   html:
     code-fold: true
@@ -24,12 +24,21 @@ The goal of this tutorial is to show step by step how to install and use this pa
 
 **Example data description**
 
-Targeted metabolomics data Retrieve metabolites concentration data from https://www.metaboanalyst.ca/MetaboAnalyst/upload/StatUploadView.xhtml or from https://www.ebi.ac.uk/metabolights/search? (Metabolights)
+Targeted metabolomics data Retrieve metabolites concentration data from (https://www.metaboanalyst.ca/MetaboAnalyst/upload/StatUploadView.xhtml or from https://www.ebi.ac.uk/metabolights/search?) (Metabolights)
 
 A data file with metabolites concentration profile will contain a matrix with metabolites names and metabolites concentrations on each row for each sample. This file will be provided by the user, I will have data for testing
 
 
-Let's get started! First, import functions we will use for this demo from the package metabolomics_analysis_tools@import_functions.
+**Step by step installation and running**
+
+Let's get started! First, we need to install the package.\
+Steps:
+  1. Git clone or download the github folder;\
+  2. Open the terminal, and go to this folder;\
+  3. Enter \
+  `pip install dist/metabolomics_analysis_tools-0.1.0.tar.gz` to install the package locally;
+
+Then, we can import functions we will use for this demo from the package metabolomics_analysis_tools@import_functions.
 
 ```{python}
 #| label: import_functions
