@@ -15,7 +15,7 @@ def test_read_file():
     assert input_data.shape == (
         77,
         65,
-    ), f"function passed the test, file read successfully"
+    ), f'{"function passed the test, file read successfully"}'
 
 
 def test_empty_input():
@@ -24,7 +24,7 @@ def test_empty_input():
     expected_output = "Error: empty input"
     assert (
         dp.read_data_file(file_path=input_data) == expected_output
-    ), f"function passed the test, empty input"
+    ), f'{"function passed the test, empty input"}'
 
 
 # normalization
@@ -32,7 +32,7 @@ after_norm = nm.normalize_by_sum(input_data).iloc[:, 2:].sum(axis=0)
 def test_normalization_sum():
     assert after_norm[0:].sum(axis=0) == len(
         after_norm
-    ), f"function passed the test, normalization by sum is working"
+    ), f'{"function passed the test, normalization by sum is working"}'
 
 
 # transformation
@@ -49,7 +49,7 @@ def test_data_transformation_log():
     # Check if the transformed_data is equal to the expected_data
     pd.testing.assert_frame_equal(
         transformed_data, expected_data
-    ), f"function passed the test"
+    ), f'{"function passed the test"}'
 
 
 def test_data_transformation_log_non_positive_values():

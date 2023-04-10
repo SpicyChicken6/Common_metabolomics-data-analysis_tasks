@@ -1,9 +1,5 @@
 import numpy as np
 
-def test_function_sum(x, y):
-    sum = x + y
-    return sum
-
 
 #normalization methods
 def normalize_by_sum(input_data):
