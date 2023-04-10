@@ -137,7 +137,7 @@ The read_data_file function will return a pandas dataframe.</li>
 <pre><code>data read successfully
 the shape of the dataframe is:  (77, 65)</code></pre>
 </div>
-<div id="read_data" class="cell-output cell-output-display" data-execution_count="44">
+<div id="read_data" class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -307,7 +307,7 @@ We can have a look at the first 5 rows of the normalized data normalized_data.he
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>normalized_data<span class="op">=</span>dn.normalize_by_median(df)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>normalized_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="normalize_data" class="cell-output cell-output-display" data-execution_count="45">
+<div id="normalize_data" class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -480,6 +480,11 @@ The PCA_analysis function will return a pandas dataframe containing the principa
 <p><img src="tutorial_files/figure-html/perform_pca-output-1.png" id="perform_pca" class="quarto-discovered-preview-image" width="702" height="710"></p>
 </div>
 </div>
+<ul>
+<li>Interpretation of the PCA results:<br>
+From the PCA results, we can see the first two PCs could explain about 41% of the variance in our data, which is not very high. We can also see that the samples are not well separated in the PCA plot, so we can’t explain the group difference in dataset very well with the top 2 features we have, which might be due to there is a non-linear relationship here in the features that couldn’t be all explained by simply PCA analysis. Therefore, further non-linear analysis might be needed to better understand the relationship between the features and the samples. (I will add more functions to the package in the future to perform non-linear analysis, such as t-SNE, UMAP, etc.)<br>
+</li>
+</ul>
 <ol start="3" type="1">
 <li>(b)Next, we can do the same for the MA plot.<br>
 The MA_plot function will return a pandas dataframe containing the log2 fold change and the -log10 p-value<br>
@@ -494,6 +499,11 @@ The MA_plot function will return a pandas dataframe containing the log2 fold cha
 <p><img src="tutorial_files/figure-html/perform_ma_plot-output-1.png" id="perform_ma_plot" width="600" height="449"></p>
 </div>
 </div>
+<ul>
+<li>Interpretation of the MA plot results:<br>
+The MA plot shows that for most metabolites identified here, they were upregulated in the non-control group, which is an interesting observation here. It is about the idea that, for patients with disease, their metabolites profile might be different from the healthy people, and this difference might be due to they are unable to metabolize some metabolites (decreased liver function), or they are producing more metabolites than the healthy people. This is a very interesting observation, and we can further explore this in the future.<br>
+</li>
+</ul>
 <ol start="3" type="1">
 <li>(c)We can also do a volcano plot, which can show us the significantly differentially expressed metabolites in the data.<br>
 The volcano_plot function will return a pandas dataframe containing the log2 fold change and the -log10 p-value volcano_plot=sa.volcano_plot(normalized_data)</li>
@@ -507,6 +517,11 @@ The volcano_plot function will return a pandas dataframe containing the log2 fol
 <p><img src="tutorial_files/figure-html/perform_volcano_plot-output-1.png" id="perform_volcano_plot" width="812" height="671"></p>
 </div>
 </div>
+<ul>
+<li>Interpretation of the volcano plot results:<br>
+For the volcano plot here, every point represents a metabolite. The x axis represents the fold change of different metabolites, and y axis represents the adjusted p values using Benjamini-Hochberg method. The red points are the metabolites that are significantly different between the two groups, and the blue points are the metabolites that are not significantly different between the two groups. We can see that there are a lot of metabolites that are significantly different between the two groups, which is consistent with the MA plot results. We can also see that there are some metabolites that are not significantly different between the two groups, but they have a very high fold change, which is also interesting. We can further explore this in the future.<br>
+</li>
+</ul>
 
 </main>
 <!-- /main column -->
