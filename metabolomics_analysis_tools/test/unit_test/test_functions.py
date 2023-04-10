@@ -1,4 +1,3 @@
-import metabolomics_analysis_tools.test.test_module as tm
 import metabolomics_analysis_tools.data_preprocessing.normalization as nm
 import metabolomics_analysis_tools.data_preprocessing.transformation as tf
 import metabolomics_analysis_tools.data_preprocessing.data_reading as dp
@@ -6,9 +5,6 @@ import pandas as pd
 import numpy as np
 import pytest
 
-## a simple test function to see if unit testing is working
-def test_xy_sum():
-    assert tm.x_y_sum(1, 2) == 3, f"test function passed the test, unit testing is working"
 
 # test functions for each module
 ## file processsing
