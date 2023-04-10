@@ -1,4 +1,3 @@
-
 def data_scaling_mean_centered(normalized_data):
     """
     Scale the data by subtracting the mean of each column from each value in the column

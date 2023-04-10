@@ -2,7 +2,6 @@ import numpy as np
 
 
 def data_transformation_log(input_data):
-
     """
     Transform the data by taking the log10 of each value
 
