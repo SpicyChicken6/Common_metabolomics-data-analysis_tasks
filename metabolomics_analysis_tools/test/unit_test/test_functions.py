@@ -1,8 +1,8 @@
 import metabolomics_analysis_tools.data_preprocessing.normalization as nm
 import metabolomics_analysis_tools.data_preprocessing.transformation as tf
 import metabolomics_analysis_tools.data_preprocessing.data_reading as dp
-import pandas as pd
-import numpy as np
+import pandas as pd # need to be installed
+import numpy as np  # need to be installed
 import pytest
 
 
