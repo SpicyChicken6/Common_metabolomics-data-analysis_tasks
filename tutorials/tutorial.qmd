@@ -46,18 +46,27 @@ Then, we can import functions we will use for this demo from the package metabol
 import metabolomics_analysis_tools.data_preprocessing.data_reading as dr
 import metabolomics_analysis_tools.data_preprocessing.normalization as dn
 import metabolomics_analysis_tools.stats_analyses.analyses as sa
+import metabolomics_analysis_tools.data_preprocessing.data_check as dc
 import warnings
 warnings.filterwarnings('ignore')
 ```
 
 1. Then we can use the data_reading module to read in the data, by default it will read in the data from the resources/test_dataset folder in the package. \
 We can also use the data_reading module to read in the data from a custom path, by passing the path as an argument to the read_data_file function (file_path='path/to/file.csv').\
-The read_data_file function will return a pandas dataframe.
+The read_data_file function will return a pandas dataframe. \
 
 ```{python}
 #| label: read_data
 df=dr.read_data_file()
 df.head()
+```
+
+We can use the data_check module to check if the data is normally distributed.\
+The normal_dist_check function will return true if the data is  normally distributed, false otherwise
+
+```{python}
+#| label: check_data
+dc.normal_dist_check(df)
 ```
 
 2. Next we can use the normalization module to normalize the data, here we will use the median normalization method

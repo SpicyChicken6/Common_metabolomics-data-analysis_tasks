@@ -4,68 +4,40 @@ from scipy import stats
 from statsmodels.stats.multitest import multipletests
 import matplotlib.pyplot as plt
 import numpy as np
-
-
-from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
-import numpy as np
+from sklearn.preprocessing import LabelEncoder
 
 def PCA_analysis(normalized_data, number_of_components=2):
-    """
-    Perform PCA analysis on the data
-
-    Args:
-        input_data (pandas.DataFrame): Dataframe containing the data
-        number_of_components (int, optional): Number of principal components to return. Defaults to 2.
-
-    Returns:
-        pandas.DataFrame: Dataframe containing the principal components
-    """
-    normalized_data = normalized_data.iloc[:, 2:]
-    # Initialize PCA object with desired number of components
+    data_to_process = normalized_data.iloc[:, 2:]
     pca = PCA(n_components=number_of_components)
-
-    # Fit the PCA model to the data
-    pca.fit(normalized_data)
-
-    # perform PCA on the DataFrame
-    pca = PCA(n_components=2)
-    principal_components = pca.fit_transform(normalized_data)
-
-    # get the percentage of variance explained by each principal component
-    variance_explained = pca.explained_variance_ratio_
-
-    # create a new DataFrame with the principal components
-    principal_df = pd.DataFrame(data=principal_components, columns=["PC1", "PC2"])
-
-    # create a LabelEncoder to encode the groups as integers
-    le = LabelEncoder()
+    principal_components = pca.fit_transform(data_to_process)
+    principal_df = pd.DataFrame(
+        data=principal_components, columns=[f"PC {i+1}" for i in range(number_of_components)]
+    )
     groups = normalized_data.iloc[:, 1]
+
+    # Create a LabelEncoder to encode the groups as integers
+    le = LabelEncoder()
     groups_encoded = le.fit_transform(groups)
 
-    # create a colormap based on the number of unique groups
+    # Create a colormap based on the number of unique groups
     cmap = plt.cm.get_cmap('viridis', len(np.unique(groups_encoded)))
 
-    # create a scatter plot of the principal components with annotations and colors based on groups
-    fig = plt.figure(figsize=(8, 8))
-    ax = fig.add_subplot(1, 1, 1)
-    ax.set_xlabel(
-        "Principal Component 1\nVariance explained: {:.2f}%".format(
-            variance_explained[0] * 100
-        ),
-        fontsize=15,
+    fig, ax = plt.subplots()
+    scatter = ax.scatter(
+        principal_df["PC 1"], principal_df["PC 2"], c=groups_encoded, cmap=cmap
     )
-    ax.set_ylabel(
-        "Principal Component 2\nVariance explained: {:.2f}%".format(
-            variance_explained[1] * 100
-        ),
-        fontsize=15,
-    )
-    ax.set_title("2 Component PCA", fontsize=20)
 
-    ax.scatter(principal_df["PC1"], principal_df["PC2"], s=50, c=cmap(groups_encoded))
+    # Create a legend with the group labels
+    legend_elements = [plt.Line2D([0], [0], marker='o', color=cmap(i), label=label, markersize=7, linestyle='')
+                       for i, label in enumerate(le.classes_)]
+    legend1 = ax.legend(handles=legend_elements, title="Groups")
+    ax.add_artist(legend1)
+    ax.set_xlabel("PC 1")
+    ax.set_ylabel("PC 2")
+    ax.set_title("PCA of Metabolomic Data")
 
-    return principal_df
+    return fig
 
 
 
@@ -146,9 +118,9 @@ def volcano_plot(
     ax.set_xlabel("Fold Change")
     ax.set_ylabel("-Log10 P-value")
     ax.set_title("Volcano Plot")
-    plt.show()
 
-    return result_grouped_data
+    return fig
+
 
 
 def ma_plot(
@@ -170,11 +142,11 @@ def ma_plot(
     logFC = np.log2(cachexic_mean / control_mean)
     data_mean = np.log2(grouped_data.iloc[:, 1:].mean(axis=0))
     # Create the MA plot
-    plt.scatter(data_mean, logFC, s=10, alpha=0.5, color="black")
-    plt.axhline(y=0, color="gray", linestyle="--")
-    plt.xlabel("Mean Expression (log2)")
-    plt.ylabel("Log-Fold Change (log2)")
-    plt.title("MA Plot")
-    plt.show()
+    fig, ax = plt.subplots()
+    ax.scatter(data_mean, logFC, s=10, alpha=0.5, color="black")
+    ax.axhline(y=0, color="gray", linestyle="--")
+    ax.set_xlabel("Mean Expression (log2)")
+    ax.set_ylabel("Log-Fold Change (log2)")
+    ax.set_title("MA Plot")
 
-    return (logFC, data_mean)
+    return fig

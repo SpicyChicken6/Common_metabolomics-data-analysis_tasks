@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metabolomics_analysis_tools Tutorial</title>
+<title>Real dataset tutorial – PCA plot</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,16 +57,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="tutorial_files/libs/clipboard/clipboard.min.js"></script>
-<script src="tutorial_files/libs/quarto-html/quarto.js"></script>
-<script src="tutorial_files/libs/quarto-html/popper.min.js"></script>
-<script src="tutorial_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="tutorial_files/libs/quarto-html/anchor.min.js"></script>
-<link href="tutorial_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="tutorial_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="tutorial_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="tutorial_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="tutorial_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="realdata_tutorial_files/libs/clipboard/clipboard.min.js"></script>
+<script src="realdata_tutorial_files/libs/quarto-html/quarto.js"></script>
+<script src="realdata_tutorial_files/libs/quarto-html/popper.min.js"></script>
+<script src="realdata_tutorial_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="realdata_tutorial_files/libs/quarto-html/anchor.min.js"></script>
+<link href="realdata_tutorial_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="realdata_tutorial_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="realdata_tutorial_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="realdata_tutorial_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="realdata_tutorial_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -82,7 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Metabolomics_analysis_tools Tutorial</h1>
+<h1 class="title">Real dataset tutorial – PCA plot</h1>
 </div>
 
 
@@ -97,15 +97,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><strong>Introduction to the Metabolomics analysis tools</strong></p>
-<p>The goal of this project is to implement a Python based pipeline or package related to metabolomics data analysis. I am currently working with targeted metabolomics data in my lab, and it will be helpful with my work to develop a package that contains some very common metabolomics data analysis tools, including:</p>
-<p>data transformation data normalization data scaling common statistical analyses including PCA, MA plot and Volcano plot. Even though there are lots of packages available for the functions mentioned above, implementing them myself will help me understand those functions better and help me do a better analysis job hopefully.</p>
-<p><strong>Goal of the tutorial</strong></p>
-<p>The goal of this tutorial is to show step by step how to install and use this package to perform data processing and statistical analyses functions in this tool, and also a bit on how to read the results generated from the analyses functions.</p>
-<p><strong>Example data description</strong></p>
-<p>Targeted metabolomics data Retrieve metabolites concentration data from https://www.metaboanalyst.ca/MetaboAnalyst/upload/StatUploadView.xhtml or from https://www.ebi.ac.uk/metabolights/search? (Metabolights)</p>
-<p>A data file with metabolites concentration profile will contain a matrix with metabolites names and metabolites concentrations on each row for each sample. This file will be provided by the user, I will have data for testing</p>
-<p>Let’s get started! First, import functions we will use for this demo from the package metabolomics_analysis_tools@import_functions.</p>
+<p><strong>Goal of this real dataset tutorial</strong></p>
+<p>In this tutorial using real dataset, we want to see if we can answer the following biological question: Can we see the pattern of clustering based on different proportions of barley grain fed in the cows?</p>
+<p><strong>Dataset description</strong></p>
+<p>“Metabolite concentrations of 39 rumen samples measured by proton NMR from dairy cows fed with different proportions of barley grain (Ametaj BN, et al.). Group label - 0, 15, 30, or 45 - indicating the percentage of grain in diet.”</p>
+<p><strong>Step by step installation and running</strong></p>
+<p>Let’s get started! First, we need to install the package.<br>
+Steps: 1. Git clone or download the github folder;<br>
+2. Open the terminal, and go to this folder;<br>
+3. Enter<br>
+<code>pip install dist/metabolomics_analysis_tools-0.1.0.tar.gz</code> to install the package locally;</p>
+<p>Then, we can import functions we will use for this demo from the package metabolomics_analysis_tools@import_functions.</p>
 <div id="import_functions" class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
@@ -474,7 +476,7 @@ We can have a look at the first 5 rows of the normalized data normalized_data.he
 </div>
 </div>
 <ol start="3" type="1">
-<li>(a)We can use the analyses module to perform statistical analyses on the data.<br>
+<li>We can use the analyses module to perform statistical analyses on the data.<br>
 Here we will first perform a PCA analysis on the data to see if there are any patterns in the data.<br>
 The PCA_analysis function will return a pandas dataframe containing the principal components principal_components=sa.PCA_analysis(normalized_data).</li>
 </ol>
@@ -484,36 +486,14 @@ The PCA_analysis function will return a pandas dataframe containing the principa
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>principal_components<span class="op">=</span>sa.PCA_analysis(normalized_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="tutorial_files/figure-html/perform_pca-output-1.png" id="perform_pca" class="quarto-discovered-preview-image" width="598" height="449"></p>
+<p><img src="realdata_tutorial_files/figure-html/perform_pca-output-1.png" id="perform_pca" class="quarto-discovered-preview-image" width="598" height="449"></p>
 </div>
 </div>
-<ol start="3" type="1">
-<li>(b)Next, we can do the same for the MA plot.<br>
-The MA_plot function will return a pandas dataframe containing the log2 fold change and the -log10 p-value<br>
+<ul>
+<li>Interpretation of the PCA results:<br>
+From the PCA results, we can see it is hard to distinguish the groups of cows bsaed on their different feeding plan (indicated by colors). However, the first two PCs explained most of the variance in the data. Therefore, even though the clustering didn’t give us a good pattern for different groups of data, I might assume that it was due to limited number of samples. If we have more samples, we might be able to see a better pattern.<br>
 </li>
-</ol>
-<div class="cell" data-execution_count="6">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>MA_plot<span class="op">=</span>sa.ma_plot(normalized_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<p><img src="tutorial_files/figure-html/perform_ma_plot-output-1.png" id="perform_ma_plot" width="600" height="449"></p>
-</div>
-</div>
-<ol start="3" type="1">
-<li>(c)We can also do a volcano plot, which can show us the significantly differentially expressed metabolites in the data.<br>
-The volcano_plot function will return a pandas dataframe containing the log2 fold change and the -log10 p-value volcano_plot=sa.volcano_plot(normalized_data)</li>
-</ol>
-<div class="cell" data-execution_count="7">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>volcano_plot<span class="op">=</span>sa.volcano_plot(normalized_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<p><img src="tutorial_files/figure-html/perform_volcano_plot-output-1.png" id="perform_volcano_plot" width="812" height="671"></p>
-</div>
-</div>
+</ul>
 
 </main>
 <!-- /main column -->
